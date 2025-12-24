@@ -1,0 +1,22 @@
+@startuml
+
+actor Visitor
+actor Reader
+actor Admin
+
+Visitor --> (Sign up)
+Visitor --> (Login)
+
+Reader --> (View books)
+Reader --> (View book details)
+Reader --> (Borrow book)
+Reader --> (Return book)
+Reader --> (View my borrows)
+
+Admin --> (Add book)
+Admin --> (Edit book)
+Admin --> (Delete book)
+Admin --> (View all readers)
+Admin --> (View all borrows)
+
+@enduml
