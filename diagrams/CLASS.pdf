@@ -1,0 +1,48 @@
+@startuml
+
+abstract class User {
+    - id : int
+    - firstName : string
+    - lastName : string
+    - email : string
+    - password : string
+    + login() : bool
+    + logout() : void
+}
+
+class Reader {
+    + borrowBook(bookId : int) : Borrow
+    + returnBook(borrowId : int) : void
+}
+
+class Admin {
+    + addBook(b : Book) : void
+    + updateBook(b : Book) : void
+    + deleteBook(id : int) : void
+}
+
+class Book {
+    - id : int
+    - title : string
+    - author : string
+    - year : int
+    - status : string
+    + isAvailable() : bool
+}
+
+class Borrow {
+    - id : int
+    - readerId : int
+    - bookId : int
+    - borrowDate : Date
+    - returnDate : Date
+    + isActive() : bool
+    + close() : void
+}
+
+User <|-- Reader
+User <|-- Admin
+
+Reader "1" -- "0..*" Borrow : has >
+Book "1" -- "0..*" Borrow : is borrowed in >
+@enduml
