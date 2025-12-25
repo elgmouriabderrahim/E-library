@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= $pageTitle ?></title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="http://localhost/assets/build/output.css">
 </head>
 <body class="bg-gray-100">
 
