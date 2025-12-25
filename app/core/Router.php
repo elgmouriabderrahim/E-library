@@ -13,7 +13,7 @@ class Router
             '/books' => ['BookController', 'index'],
             '/books/show' => ['BookController', 'show'],
             '/my-borrows' => ['BorrowController', 'index'],
-            '/admin' => ['AdminController', 'dashboard'],
+            '/admin' => ['AdminController', 'dashboard']
         ];
     }
 
