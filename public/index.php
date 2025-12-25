@@ -1,10 +1,7 @@
 <?php
+session_start();
 
-require_once __DIR__ . '/../config/env.php';
-require_once __DIR__ . '/../app/Core/Database.php';
+require_once __DIR__ . '/../app/Core/Router.php';
 
-use App\Core\Database;
-
-$db = Database::getConnection();
-
-echo "Database connected successfully";
+$router = new Router();
+$router->run();
