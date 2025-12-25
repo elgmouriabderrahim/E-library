@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= $pageTitle ?></title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/build/output.css">
 </head>
 <body class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('/assets/images/login-bg.png');">
 
@@ -11,27 +11,33 @@
         <h1 class="text-3xl font-semibold text-gray-800 text-center">Join the Library</h1>
         <p class="text-gray-600 text-center">Manage your books, loans, and reservations easily.</p>
 
-        <form method="post" class="space-y-4">
+        <form method="POST" class="space-y-4">
             <div>
                 <label class="block text-sm font-medium text-gray-700">First Name</label>
                 <input
                     type="text"
-                    name="firstName"
-                    required
+                    name="firstname"
                     class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     placeholder="enter your firstname"
+                    value = "<?= htmlspecialchars($_POST['firstname'] ?? "") ?>"
                 >
+                <?php if (isset($errors['firstname'])): ?>
+                    <span class="text-red-500"><?= $errors['firstname'] ?></span>
+                <?php endif; ?>
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Last Name</label>
                 <input
                     type="text"
-                    name="lastName"
-                    required
+                    name="lastname"
                     class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    placeholder="enter yout lastname"
+                    placeholder="enter your lastname"
+                    value = "<?= htmlspecialchars($_POST['lastname'] ?? "") ?>"
                 >
+                <?php if (isset($errors['lastname'])): ?>
+                    <span class="text-red-500"><?= $errors['lastname'] ?></span>
+                <?php endif; ?>
             </div>
 
             <div>
@@ -39,10 +45,13 @@
                 <input
                     type="email"
                     name="email"
-                    required
                     class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     placeholder="example@gmail.com"
+                    value = "<?= htmlspecialchars($_POST['email'] ?? "") ?>"
                 >
+                <?php if (isset($errors['email'])): ?>
+                    <span class="text-red-500"><?= $errors['email'] ?></span>
+                <?php endif; ?>
             </div>
 
             <div>
@@ -50,21 +59,27 @@
                 <input
                     type="password"
                     name="password"
-                    required
                     class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    placeholder="Create a strong password"
+                    placeholder="enter yout password"
+                    value = "<?= htmlspecialchars($_POST['password'] ?? "") ?>"
                 >
+                <?php if (isset($errors['password'])): ?>
+                    <span class="text-red-500"><?= $errors['password'] ?></span>
+                <?php endif; ?>
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
                 <input
                     type="password"
-                    name="confirmPassword"
-                    required
+                    name="cpassword"
                     class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     placeholder="Confirm your password"
+                    value = "<?= htmlspecialchars($_POST['cpassword'] ?? "") ?>"
                 >
+                <?php if (isset($errors['cpassword'])): ?>
+                    <span class="text-red-500"><?= $errors['cpassword'] ?></span>
+                <?php endif; ?>
             </div>
 
             <button

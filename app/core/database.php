@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Core;
-
+require_once __DIR__ . "/../../config/env.php";
 use PDO;
 use PDOException;
 
