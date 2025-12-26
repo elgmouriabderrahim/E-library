@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__ . "/../helpers/Auth.php";
-Auth::loggedin();
-
 require_once __DIR__ . "/../helpers/helperFunctions.php";
 require_once __DIR__ . "/../Models/User.php";
 require_once __DIR__ . "/../Models/Admin.php";
@@ -12,6 +10,8 @@ class AuthController
 {
     public function register()
     {
+        Auth::guestOnly();
+
         $pageTitle = 'Register';
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $firstname = Helper::filterData($_POST['firstname'] ?? "");
@@ -36,6 +36,8 @@ class AuthController
 
     public function login()
     {
+        Auth::guestOnly();
+
         $pageTitle = 'Login';
         $errors = [];
 
@@ -85,5 +87,11 @@ class AuthController
         }
 
         require_once __DIR__ . '/../Views/pages/login.php';
+    }
+    public function logout(){
+        Auth::userOnly();
+        User::logout();
+        header("location: /login");
+        exit;
     }
 }

@@ -26,7 +26,7 @@ abstract class User
     {
         return password_verify($password, $this->password);
     }
-    public function logout(): bool
+    public static function logout()
     {
         session_unset();
         session_destroy();
@@ -46,7 +46,7 @@ abstract class User
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $pdo->prepare("
-                INSERT INTO users (firstname, lastname, email, password)
+                INSERT INTO users (firstName, lastName, email, password)
                 VALUES (?, ?, ?, ?)
             ");
 
