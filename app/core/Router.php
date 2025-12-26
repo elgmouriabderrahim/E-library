@@ -10,6 +10,7 @@ class Router
             '/' => ['HomeController', 'index'],
             '/login' => ['AuthController', 'login'],
             '/register' => ['AuthController', 'register'],
+            '/logout' => ['AuthController', 'logout'],
             '/books' => ['BookController', 'index'],
             '/books/show' => ['BookController', 'show'],
             '/my-borrows' => ['BorrowController', 'index'],
