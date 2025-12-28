@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../helpers/Auth.php";
 require_once __DIR__ . "/../core/Database.php";
 require_once __DIR__ . "/../helpers/helperFunctions.php";
+require_once __DIR__ . "/../models/Admin.php";
 class BooksController
 {
     public function books()
@@ -43,9 +44,22 @@ class BooksController
     {
         Auth::adminOnly();
         $pageTitle = "Add New Book";
-        require_once __DIR__ . "/../models/Admin.php";
-        $admin = new Admin($_SESSION['id']);
-        $admin->addBook();
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $book['title'] = Helper::filterData($_POST['title'] ?? '');
+            $book['author'] = Helper::filterData($_POST['author'] ?? '');
+            $book['year'] = Helper::filterData($_POST['year'] ?? '');
+            
+            $errors = Helper::validateBookInputs($book['title'], $book['author'], $book['year']);
+            
+            if (empty($errors)) {
+                $admin = new Admin($_SESSION['id']);
+                $errors = $admin->addBook($book);
+                header("Location: /admin/books");
+                exit;
+            }
+        }
+
         $view = '/admin/books/add.php';
         require __DIR__ . '/../Views/layouts/main.php';
     }
@@ -53,10 +67,8 @@ class BooksController
     public function edit()
     {
         Auth::adminOnly();
-        $pdo = Database::getConnection();
         $pageTitle = "Edit Book";
         $errors = [];
-        
         $bookId = $_GET['id'] ?? null;
         if (!$bookId) {
             header("Location: /admin/books");
@@ -68,15 +80,16 @@ class BooksController
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST' &&  isset($_POST['book_id'])) {
-            $title = Helper::filterData($_POST['title'] ?? '');
-            $author = Helper::filterData($_POST['author'] ?? '');
-            $year = Helper::filterData($_POST['year'] ?? '');
-
-            $errors = Helper::validateBookInputs($title, $author, $year);
-
+            $book['title'] = Helper::filterData($_POST['title'] ?? '');
+            $book['author'] = Helper::filterData($_POST['author'] ?? '');
+            $book['year'] = Helper::filterData($_POST['year'] ?? '');
+            $book['id'] = $bookId;
+            
+            $errors = Helper::validateBookInputs($book['title'], $book['author'], $book['year']);
+            
             if (empty($errors)) {
-                $stmt = $pdo->prepare("UPDATE books SET title = ?, author = ?, year = ? WHERE id = ?");
-                $stmt->execute([$title, $author, $year, $bookId]);
+                $admin = new Admin($_SESSION['id']);
+                $admin->editBook($book);
                 header("Location: /admin/books");
                 exit;
             }
@@ -92,7 +105,7 @@ class BooksController
             header("location: /admin/books");
             exit;
         }
-
+        
         $pdo = Database::getconnection();
         $stmt = $pdo->prepare("delete from books where id = ?");
         $stmt->execute([$bookId]);

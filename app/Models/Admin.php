@@ -2,28 +2,18 @@
 require_once "User.php";
 class Admin extends User
 {
-    public function addBook()
+    public function addBook($book)
     {
         $pdo = Database::getConnection();
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = Helper::filterData($_POST['title'] ?? '');
-            $author = Helper::filterData($_POST['author'] ?? '');
-            $year = Helper::filterData($_POST['year'] ?? '');
-            
-            $errors = Helper::validateBookInputs($title, $author, $year);
-            
-            if (empty($errors)) {
-                $stmt = $pdo->prepare("INSERT INTO books (title, author, year, status) VALUES (?, ?, ?, ?)");
-                $stmt->execute([$title, $author, $year, 'available']);
-                header("Location: /admin/books");
-                exit;
-            }
-        }
+        $stmt = $pdo->prepare("INSERT INTO books (title, author, year, status) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$book['title'], $book['author'], $book['year'], 'available']);
     }
 
-    public function updateBook($book)
+    public function editBook($book)
     {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("UPDATE books SET title = ?, author = ?, year = ? WHERE id = ?");
+        $stmt->execute([$book['title'], $book['author'], $book['year'], $book['id']]);
     }
 
     public function deleteBook($id)
