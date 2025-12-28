@@ -23,6 +23,21 @@ class DashboardController
             'activeBorrows' => $pdo->query("SELECT COUNT(*) FROM borrows WHERE returnDate IS NULL")->fetchColumn(),
             'returnedBorrows' => $pdo->query("SELECT COUNT(*) FROM borrows WHERE returnDate IS NOT NULL")->fetchColumn(),
         ];
+        $stmt = $pdo->query("
+            SELECT 
+                b.borrowDate,
+                b.returnDate,
+                books.title AS book_title,
+                users.firstName,
+                users.lastName
+            FROM borrows b
+            JOIN books ON books.id = b.bookId
+            JOIN users ON users.id = b.readerId
+            ORDER BY b.borrowDate DESC
+            LIMIT 3
+        ");
+
+        $recentBorrows = $stmt->fetchAll();
         require __DIR__ . '/../Views/layouts/main.php';
     }
 }
