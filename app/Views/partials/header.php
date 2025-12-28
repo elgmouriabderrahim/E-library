@@ -32,7 +32,7 @@
             <?php endif ?>
             
             <?php if($_SESSION['role']  === "reader"):?>
-            <a href="/my-borrows" class="px-3 hover:underline">My Borrows</a>
+            <a href="/myBorrows" class="px-3 hover:underline">My Borrows</a>
             <?php endif ?>
             
             
