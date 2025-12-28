@@ -52,7 +52,7 @@
         </div>
 
         <div class="p-6 text-center bg-slate-50 border-t border-slate-200">
-            <a href="/admin/books" class="text-blue-600 hover:text-indigo-600 font-medium transition-colors duration-300">
+            <a href="/books" class="text-blue-600 hover:text-indigo-600 font-medium transition-colors duration-300">
                 Back to Books
             </a>
         </div>
