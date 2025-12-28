@@ -48,35 +48,6 @@ class BorrowsController
         ");
         $stmt->execute([$_SESSION['id']]);
         $myBorrows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$myBorrows = [
-    [
-        'borrowId' => 1,
-        'bookId' => 101,
-        'title' => '1984',
-        'author' => 'George Orwell',
-        'year' => 1949,
-        'borrowDate' => '2025-01-05',
-        'returnDate' => null,
-    ],
-    [
-        'borrowId' => 2,
-        'bookId' => 102,
-        'title' => 'Clean Code',
-        'author' => 'Robert Martin',
-        'year' => 2008,
-        'borrowDate' => '2025-01-10',
-        'returnDate' => '2025-01-20',
-    ],
-    [
-        'borrowId' => 3,
-        'bookId' => 103,
-        'title' => 'The Pragmatic Programmer',
-        'author' => 'Andrew Hunt',
-        'year' => 1999,
-        'borrowDate' => '2025-02-01',
-        'returnDate' => null,
-    ],
-];
 
         require __DIR__ . '/../Views/layouts/main.php';
     }
