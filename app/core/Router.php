@@ -14,7 +14,7 @@ class Router
             '/admin/books/edit' => ['BooksController', 'edit'],
             '/admin/books/delete' => ['BooksController', 'delete'],
             '/admin/users' => ['UsersController', 'users'],
-            '/borrows' => ['BorrowsController', 'borrows'],
+            '/admin/borrows' => ['BorrowsController', 'borrows'],
             '/my-borrows' => ['BorrowController', 'my-borrow'],
             '/profile' => ['ProfileController', 'profile'],
             '/dashboard' => ['DashboardController', 'dashboard'],
