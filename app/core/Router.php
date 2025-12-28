@@ -18,6 +18,7 @@ class Router
             '/admin/dashboard' => ['DashboardController', 'dashboard'],
             '/admin/profile' => ['ProfileController', 'profile'],
             '/books' => ['BooksController', 'readerBooks'],
+            '/books/show' => ['BooksController', 'show'],
             '/myBorrows' => ['BorrowsController', 'myBorrows'],
             '/profile' => ['ProfileController', 'profile'],
             '/login' => ['AuthController', 'login'],
@@ -30,8 +31,10 @@ class Router
     {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         if($uri === '/')
-            $uri = '/admin/overview';
-
+            if($_SESSION['role'] === 'admin')
+                $uri = '/admin/overview';
+            else
+                $uri = '/books';
         if (isset($this->routes[$uri])) {
             [$controllerName, $method] = $this->routes[$uri];
 

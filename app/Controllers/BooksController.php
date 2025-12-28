@@ -6,10 +6,9 @@ class BooksController
 {
     public function books()
     {
-        Auth::userOnly();
+        Auth::adminOnly();
         $pageTitle = "Books";
         $view = '/admin/books/books.php';
-
         $pdo = Database::getconnection();
         $stmt = $pdo->prepare("select * from books order by id desc");
         $stmt->execute();
@@ -21,17 +20,21 @@ class BooksController
     {
         Auth::userOnly();
         $pageTitle = "Book Details";
-        $view = '/admin/books/show.php';
+        if($_SESSION['role'] == 'admin')
+            $view = '/admin/books/show.php';
+        else
+            $view = '/reader/books/show.php';
+
         $pdo = Database::getConnection();
         
         $bookId = $_GET['id'] ?? null;
         if (!$bookId) {
-            header("Location: /admin/books");
+            header("Location: /");
             exit;
         }
         $book = Helper::fetchBookById($bookId);
         if(!$book){
-            header("location: /admin/books");
+            header("location: /");
             exit;
         }
         require __DIR__ . '/../Views/layouts/main.php';

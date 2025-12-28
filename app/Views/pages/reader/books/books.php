@@ -1,4 +1,3 @@
-
 <div class="min-h-[80vh] p-8 bg-slate-100">
 
     <div class="flex justify-between items-center mb-6">
@@ -31,10 +30,12 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                 <?php if($book['status'] === "available"): ?>
-                                    <a href="/books/borrow?id=<?= $book['id'] ?>" class="text-blue-600 hover:underline">Borrow This Book</a>
-                                <?php elseif(isMyBorrow($myBorrows ,$book['id'])): ?>
-                                    <a href="/books/return?id=<?= $book['id'] ?>" class="text-yellow-600 hover:underline">Return This Book</a>
+                                    <a href="/books/borrow?id=<?= $book['id'] ?>" class="text-blue-600 hover:underline">Borrow</a>
+                                <?php elseif(isMyBorrow($myBorrows, $book['id'])): ?>
+                                    <a href="/books/return?id=<?= $book['id'] ?>" class="text-yellow-600 hover:underline">Return</a>
                                 <?php endif; ?>
+
+                                <a href="/books/show?id=<?= $book['id'] ?>" class="text-gray-600 hover:underline">View Details</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
