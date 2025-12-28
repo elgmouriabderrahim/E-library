@@ -1,45 +1,80 @@
-<h1 class="text-3xl font-bold mb-6">Borrows Management</h1>
+<div class="min-h-[80vh] p-8 bg-slate-100">
 
-<div class="bg-white shadow rounded overflow-x-auto">
-    <table class="min-w-full border-collapse">
-        <thead class="bg-gray-100">
-            <tr>
-                <th class="border px-4 py-2 text-left">ID</th>
-                <th class="border px-4 py-2 text-left">Reader</th>
-                <th class="border px-4 py-2 text-left">Book</th>
-                <th class="border px-4 py-2 text-left">Borrow Date</th>
-                <th class="border px-4 py-2 text-left">Return Date</th>
-                <th class="border px-4 py-2 text-left">Status</th>
-            </tr>
-        </thead>
+    <div class="flex justify-center text-center items-center mb-6 ">
+        <div>
+            <h2 class="text-3xl font-bold text-slate-800">Borrows Management</h2>
+            <p class="text-slate-500 mt-1">All borrowing activity</p>
+        </div>
+    </div>
 
-        <tbody>
-            <?php if (empty($borrows)): ?>
-                <tr>
-                    <td colspan="6" class="text-center py-6 text-gray-500">
-                        No borrows found.
-                    </td>
-                </tr>
-            <?php else: ?>
-                <?php foreach ($borrows as $borrow): ?>
-                    <tr class="hover:bg-gray-50">
-                        <td class="border px-4 py-2"><?= htmlspecialchars($borrow['id']) ?></td>
-                        <td class="border px-4 py-2"><?= htmlspecialchars($borrow['readerName']) ?></td>
-                        <td class="border px-4 py-2"><?= htmlspecialchars($borrow['bookTitle']) ?></td>
-                        <td class="border px-4 py-2"><?= htmlspecialchars($borrow['borrowDate']) ?></td>
-                        <td class="border px-4 py-2">
-                            <?= $borrow['returnDate'] ? htmlspecialchars($borrow['returnDate']) : '-' ?>
-                        </td>
-                        <td class="border px-4 py-2 font-semibold">
-                            <?php if ($borrow['returnDate'] === null): ?>
-                                <span class="text-red-600">Active</span>
-                            <?php else: ?>
-                                <span class="text-green-600">Returned</span>
-                            <?php endif; ?>
-                        </td>
+    <div class="overflow-x-auto bg-white rounded-2xl shadow p-4">
+
+        <?php if (!empty($borrows)): ?>
+
+            <table class="min-w-full divide-y divide-slate-200">
+                <thead class="bg-slate-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ID</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Book</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Reader</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Borrow Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Return Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Status</th>
                     </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                </thead>
+
+                <tbody class="bg-white divide-y divide-slate-200">
+
+                    <?php foreach ($borrows as $borrow): ?>
+
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="px-6 py-4 text-slate-600">
+                                #<?= htmlspecialchars($borrow['id']) ?>
+                            </td>
+
+                            <td class="px-6 py-4 font-medium text-slate-800">
+                                <?= htmlspecialchars($borrow['book_title']) ?>
+                            </td>
+
+                            <td class="px-6 py-4 text-slate-600">
+                                <?= htmlspecialchars($borrow['firstName']) ?>
+                                <?= htmlspecialchars($borrow['lastName']) ?>
+                            </td>
+
+                            <td class="px-6 py-4 text-slate-600">
+                                <?= htmlspecialchars($borrow['borrowDate']) ?>
+                            </td>
+
+                            <td class="px-6 py-4 text-slate-600">
+                                <?= $borrow['returnDate'] ? htmlspecialchars($borrow['returnDate']) : '—' ?>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <?php if ($borrow['returnDate'] === null): ?>
+                                    <span class="px-2 inline-flex text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                                        Active
+                                    </span>
+                                <?php else: ?>
+                                    <span class="px-2 inline-flex text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                        Returned
+                                    </span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+
+                    <?php endforeach; ?>
+
+                </tbody>
+            </table>
+
+        <?php else: ?>
+
+            <div class="text-center p-10 text-slate-500">
+                No borrows found.
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
 </div>
