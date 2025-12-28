@@ -106,9 +106,8 @@ class BooksController
             exit;
         }
         
-        $pdo = Database::getconnection();
-        $stmt = $pdo->prepare("delete from books where id = ?");
-        $stmt->execute([$bookId]);
+        $admin = new Admin($_SESSION['id']);
+        $admin->deleteBook($bookId);
         header("location: /admin/books");
         exit;
     }

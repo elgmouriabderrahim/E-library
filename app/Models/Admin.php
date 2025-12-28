@@ -16,7 +16,10 @@ class Admin extends User
         $stmt->execute([$book['title'], $book['author'], $book['year'], $book['id']]);
     }
 
-    public function deleteBook($id)
+    public function deleteBook($bookId)
     {
+        $pdo = Database::getconnection();
+        $stmt = $pdo->prepare("delete from books where id = ?");
+        $stmt->execute([$bookId]);
     }
 }
