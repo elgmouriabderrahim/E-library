@@ -30,9 +30,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                 <?php if($book['status'] === "available"): ?>
-                                    <a href="/books/borrow?id=<?= $book['id'] ?>" class="text-blue-600 hover:underline">Borrow</a>
-                                <?php elseif(isMyBorrow($myBorrows, $book['id'])): ?>
-                                    <a href="/books/return?id=<?= $book['id'] ?>" class="text-yellow-600 hover:underline">Return</a>
+                                    <a href="/books/borrow?id=<?= $book['id'] ?>" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-blue-600 hover:underline">Borrow</a>
+                                <?php elseif(Helper::isMyBorrow($myBorrows, $book['id'])): ?>
+                                    <a href="/books/returnBook?id=<?= $book['id'] ?>&redirect=/books" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-yellow-600 hover:underline">Return</a>
                                 <?php endif; ?>
 
                                 <a href="/books/show?id=<?= $book['id'] ?>" class="text-gray-600 hover:underline">View Details</a>

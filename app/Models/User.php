@@ -8,18 +8,17 @@ abstract class User
     protected string $email;
     protected string $password;
 
-    public function __construct(
-        int $id,
-        string $firstName,
-        string $lastName,
-        string $email,
-        string $password
-    ) {
-        $this->id = $id;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->password = $password;
+    public function __construct(int $id) {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->execute([$id]);
+        $userData = $stmt->fetch();
+
+        $this->id = $userData['id'];
+        $this->firstName = $userData['firstName'];
+        $this->lastName = $userData['lastName'];
+        $this->email = $userData['email'];
+        $this->password = $userData['password'];
     }
 
     public function login($password): bool

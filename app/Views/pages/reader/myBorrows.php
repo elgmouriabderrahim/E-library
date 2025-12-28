@@ -29,7 +29,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <?php if (!$borrow['returnDate']): ?>
-                                    <a href="/books/return?id=<?= $borrow['borrowId'] ?>" class="border p-2 rounded-lg text-yellow-600 hover:bg-neutral-100">Return Book</a>
+                                    <a href="/books/returnBook?id=<?= $borrow['bookId'] ?>&redirect=/my-borrows" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-yellow-600">Return Book</a>
                                 <?php else: ?>
                                     <span class="text-green-600 font-semibold">Returned</span>
                                 <?php endif; ?>

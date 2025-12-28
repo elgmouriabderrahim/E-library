@@ -55,21 +55,9 @@ class AuthController
 
                 if ($userData) {
                     if ($userData['role'] === 'admin') {
-                        $user = new Admin(
-                            $userData['id'],
-                            $userData['firstName'],
-                            $userData['lastName'],
-                            $userData['email'],
-                            $userData['password']
-                        );
+                        $user = new Admin($userData['id']);
                     } else {
-                        $user = new Reader(
-                            $userData['id'],
-                            $userData['firstName'],
-                            $userData['lastName'],
-                            $userData['email'],
-                            $userData['password']
-                        );
+                        $user = new Reader($userData['id']);
                     }
 
                     if ($user->login($password)) {
