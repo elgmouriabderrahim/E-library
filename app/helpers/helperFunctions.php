@@ -68,4 +68,11 @@ class Helper {
             $stmt->execute([$bookId]);
             return $stmt->fetch();
         }
+        public static function isMyBorrow($myBorrows, $bookid){
+            foreach($myBorrows as $myBorrow){
+                if($myBorrow == $bookid)
+                    return true;
+            }
+            return false;
+        }
 }
