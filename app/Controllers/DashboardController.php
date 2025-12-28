@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../helpers/Auth.php";
-Auth::userOnly();
+Auth::adminOnly();
 
 require_once __DIR__ . "/../helpers/helperFunctions.php";
 require_once __DIR__ . "/../models/User.php";

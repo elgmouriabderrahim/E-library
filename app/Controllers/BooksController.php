@@ -114,7 +114,7 @@ class BooksController
     }
     public function readerBooks()
     {
-        Auth::userOnly();
+        Auth::readerOnly();
         $pageTitle = "Books";
         $view = 'reader/books/books.php';
     

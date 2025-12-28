@@ -13,12 +13,21 @@ class Auth {
             exit;
         }
     }
+    static public function readerOnly(){
+        if (!isset($_SESSION['id'])) {
+            header('Location: /login');
+            exit;
+        }elseif($_SESSION['role'] !== 'reader'){
+            header("location: /");
+            exit;
+        }
+    }
     static public function adminOnly(){
         if (!isset($_SESSION['id'])) {
             header('Location: /login');
             exit;
         }elseif($_SESSION['role'] !== 'admin'){
-            header("location: /404");
+            header("location: /");
             exit;
         }
     }

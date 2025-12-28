@@ -1,14 +1,14 @@
 <?php
 
 require_once __DIR__ . "/../helpers/Auth.php";
+Auth::adminOnly();
+
 require_once __DIR__ . "/../core/Database.php";
 
 class UsersController
 {
     public function users()
     {
-        Auth::adminOnly();
-
         $pageTitle = 'Users Management';
         $view = '/admin/users.php';
 
