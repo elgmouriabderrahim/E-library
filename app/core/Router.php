@@ -17,6 +17,7 @@ class Router
             '/admin/borrows' => ['BorrowsController', 'borrows'],
             '/admin/dashboard' => ['DashboardController', 'dashboard'],
             '/admin/profile' => ['ProfileController', 'profile'],
+            '/books' => ['BooksController', 'readerBooks'],
             '/my-borrows' => ['BorrowController', 'my-borrow'],
             '/login' => ['AuthController', 'login'],
             '/register' => ['AuthController', 'register'],
