@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/../helpers/Auth.php";
 require_once __DIR__ . "/../core/Database.php";
+require_once __DIR__ . "/../models/Book.php";
 
 class BorrowsController
 {
@@ -54,8 +55,7 @@ class BorrowsController
     public function borrow()
     {
         Auth::readerOnly();
-        $pdo = Database::getConnection();
-
+        
         require_once __DIR__ . "/../models/Reader.php";
         $reader = new Reader($_SESSION['id']);
 
@@ -64,18 +64,16 @@ class BorrowsController
             header("Location: /books");
             exit;
         }
+        $book = new Book($bookId);
+        
 
-        $stmt = $pdo->prepare("SELECT status FROM books WHERE id = ?");
-        $stmt->execute([$bookId]);
-        $book = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$book || $book['status'] !== 'available') {
+        if (!$book || !$book->isAvailable()) {
             $_SESSION['error'] = "This book is not available.";
             header("Location: /books");
             exit;
         }
 
-        $reader->borrowBook($bookId);
+        $reader->borrowBook($book);
 
         $_SESSION['success'] = "You have successfully borrowed the book!";
         header("Location: /books");
@@ -95,8 +93,8 @@ class BorrowsController
             header("Location: $redirect");
             exit;
         }
-
-        $reader->returnBook($bookId);
+        $book = new Book($bookId);
+        $reader->returnBook($book);
 
         $_SESSION['success'] = "Book returned successfully!";
         header("Location: $redirect");
