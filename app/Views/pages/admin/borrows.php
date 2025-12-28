@@ -1,9 +1,9 @@
-<div class="min-h-[80vh] p-8 bg-slate-100">
+<div class="p-8">
 
     <div class="flex justify-center text-center items-center mb-6 ">
         <div>
-            <h2 class="text-3xl font-bold text-slate-800">Borrows Management</h2>
-            <p class="text-slate-500 mt-1">All borrowing activity</p>
+            <h2 class="text-3xl font-bold text-neutral-100">Borrows Management</h2>
+            <p class="text-neutral-100 mt-1">All borrowing activity</p>
         </div>
     </div>
 

@@ -1,8 +1,8 @@
-<div class="min-h-[75vh] bg-slate-100 p-8">
+<div class="p-8">
 
     <div class="mb-10 text-center">
-        <h1 class="text-3xl font-semibold text-slate-800">Overview</h1>
-        <p class="text-slate-500 mt-2">Library statistics summary</p>
+        <h1 class="text-3xl font-semibold text-white">Overview</h1>
+        <p class="text-white mt-2">Library statistics summary</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
