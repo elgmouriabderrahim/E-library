@@ -41,4 +41,31 @@ class Helper {
                         $errors['password'] = "password required";
                 return $errors;
         }
+        public static function validateBookInputs($title, $author, $year){
+                $errors = [];
+                $title_regex = '/^.{3,}$/';
+                $author_regex = '/^[a-zA-Z\s\.\-]{3,50}$/';
+
+                if ($title === '')
+                    $errors['title'] = "Title is required";
+                elseif(!preg_match($title_regex, $title))
+                    $errors['title'] = "invalid title";
+
+                if ($author === "")
+                    $errors['author'] = "Author is required";
+                elseif(!preg_match($author_regex, $author))
+                    $errors['author'] = "invalid author name";
+                
+                if ($year === "")
+                    $errors['year'] = "year is required";
+                elseif ($year < 1000 || $year > (int)date('Y'))
+                    $errors['year'] = "Enter a valid year";
+                return $errors; 
+        }
+        public static function fetchBookById($bookId){
+            $pdo = Database::getConnection();
+            $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ?");
+            $stmt->execute([$bookId]);
+            return $stmt->fetch();
+        }
 }

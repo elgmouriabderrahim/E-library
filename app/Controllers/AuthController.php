@@ -4,7 +4,7 @@ require_once __DIR__ . "/../helpers/helperFunctions.php";
 require_once __DIR__ . "/../Models/User.php";
 require_once __DIR__ . "/../Models/Admin.php";
 require_once __DIR__ . "/../Models/Reader.php";
-require_once __DIR__ . '/../core/database.php';
+require_once __DIR__ . '/../core/Database.php';
 
 class AuthController
 {
