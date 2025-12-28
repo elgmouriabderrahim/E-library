@@ -2,12 +2,34 @@
     <div class="container mx-auto flex justify-between">
         <a href="/" class="font-bold text-xl">E-Library</a>
         <nav>
-            <a href="/" class="px-3 hover:underline">Home</a>
-            <a href="/books" class="px-3 hover:underline">Books</a>
-            <a href="/my-borrows" class="px-3 hover:underline">My Borrows</a>
             <?php if($_SESSION['role']  === "admin"):?>
-            <a href="/admin" class="px-3 hover:underline">Admin</a>
+            <a href="/admin/overview" class="px-3 hover:underline">overview</a>
             <?php endif ?>
+
+            <?php if($_SESSION['role']  === "admin"):?>
+                <a href="/admin/books" class="px-3 hover:underline">Books</a>
+            <?php endif ?>
+
+            <?php if($_SESSION['role']  === "admin"):?>
+                <a href="/admin/users" class="px-3 hover:underline">users</a>
+            <?php endif ?>
+
+            <?php if($_SESSION['role']  === "admin"):?>
+                <a href="/admin/borrows" class="px-3 hover:underline">borrows</a>
+            <?php endif ?>
+                
+                
+            <?php if($_SESSION['role']  === "admin"):?>
+                <a href="/admin/dashboard" class="px-3 hover:underline">Dashboard</a>
+            <?php endif ?>
+                    
+            
+            <?php if($_SESSION['role']  === "reader"):?>
+                <a href="/my-borrows" class="px-3 hover:underline">My Borrows</a>
+            <?php endif ?>
+                
+                
+            <a href="/admin/profile" class="px-3 hover:underline">profile</a>
             <a href="/logout" class="px-3 hover:underline">logout</a>
         </nav>
     </div>
