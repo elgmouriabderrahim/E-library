@@ -1,7 +1,7 @@
-<div class="min-h-[80vh] p-8 bg-slate-100">
+<div class="p-8">
 
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-3xl font-bold text-slate-800">My Borrows</h2>
+    <div class=" my-6 text-center">
+        <h2 class="text-3xl font-bold text-neutral-100">My Borrows</h2>
     </div>
 
     <div class="overflow-x-auto bg-white rounded-2xl shadow p-4">

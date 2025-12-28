@@ -1,9 +1,8 @@
-<div class="min-h-[80vh] p-8 bg-slate-100">
+<div class=" p-8">
 
-    <!-- Header -->
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-3xl font-bold text-slate-800">Books Management</h2>
-        <a href="/admin/books/add" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+        <h2 class="text-3xl font-bold text-neutral-100">Books Management</h2>
+        <a href="/admin/books/add" class="border rounded-md py-1 px-3 bg-neutral-100 hover:bg-neutral-200 text-blue-600  shadow transition">
             + Add New Book
         </a>
     </div>
@@ -32,9 +31,9 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                                <a href="/admin/books/show?id=<?= $book['id'] ?>" class="text-blue-600 hover:underline">View</a>
-                                <a href="/admin/books/edit?id=<?= $book['id'] ?>" class="text-yellow-600 hover:underline">Edit</a>
-                                <a href="/admin/books/delete?id=<?= $book['id'] ?>" class="text-red-600 hover:underline">Delete</a>
+                                <a href="/admin/books/show?id=<?= $book['id'] ?>" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-blue-600 ">View</a>
+                                <a href="/admin/books/edit?id=<?= $book['id'] ?>" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-yellow-600">Edit</a>
+                                <a href="/admin/books/delete?id=<?= $book['id'] ?>" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-red-600">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

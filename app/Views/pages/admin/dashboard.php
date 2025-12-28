@@ -1,34 +1,34 @@
-<div class="min-h-[80vh] p-8 bg-slate-100">
+<div class="p-8">
 
     <div class="mb-8 w-full text-center">
-        <h1 class="text-3xl font-bold text-slate-800">Dashboard</h1>
-        <p class="text-slate-500 mt-1">Overview of your library system</p>
+        <h1 class="text-3xl font-bold text-neutral-100">Dashboard</h1>
+        <p class="text-neutral-100 mt-1">Overview of your library system</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
 
-        <div class="bg-white rounded-2xl shadow p-6 border border-slate-200">
+        <div class="bg-neutral-100 rounded-2xl shadow p-6 border border-slate-200">
             <p class="text-sm text-slate-500">Total Users</p>
             <h2 class="text-3xl font-bold text-slate-800 mt-2">
                 <?= $stats['users'] ?? 0 ?>
             </h2>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6 border border-slate-200">
+        <div class="bg-neutral-100 rounded-2xl shadow p-6 border border-slate-200">
             <p class="text-sm text-slate-500">Total Books</p>
             <h2 class="text-3xl font-bold text-slate-800 mt-2">
                 <?= $stats['books'] ?? 0 ?>
             </h2>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6 border border-slate-200">
+        <div class="bg-neutral-100 rounded-2xl shadow p-6 border border-slate-200">
             <p class="text-sm text-slate-500">Active Borrows</p>
             <h2 class="text-3xl font-bold text-red-600 mt-2">
                 <?= $stats['activeBorrows'] ?? 0 ?>
             </h2>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6 border border-slate-200">
+        <div class="bg-neutral-100 rounded-2xl shadow p-6 border border-slate-200">
             <p class="text-sm text-slate-500">Returned Books</p>
             <h2 class="text-3xl font-bold text-green-600 mt-2">
                 <?= $stats['returnedBorrows'] ?? 0 ?>
@@ -37,7 +37,7 @@
 
     </div>
 
-    <div class="bg-white rounded-2xl shadow border border-slate-200 p-6">
+    <div class="bg-neutral-100 rounded-2xl shadow border border-slate-200 p-6">
 
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-semibold text-slate-800">Recent Borrows</h2>
