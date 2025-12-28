@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . "/../helpers/Auth.php";
 require_once __DIR__ . "/../helpers/helperFunctions.php";
-require_once __DIR__ . "/../Models/User.php";
-require_once __DIR__ . "/../Models/Admin.php";
-require_once __DIR__ . "/../Models/Reader.php";
+require_once __DIR__ . "/../models/User.php";
+require_once __DIR__ . "/../models/Admin.php";
+require_once __DIR__ . "/../models/Reader.php";
 require_once __DIR__ . '/../core/Database.php';
 
 class AuthController
@@ -48,7 +48,7 @@ class AuthController
             $errors = Helper::validateLoginInputs($email, $password);
 
             if (empty($errors)) {
-                $pdo = App\Core\Database::getConnection();
+                $pdo = Database::getConnection();
                 $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
                 $stmt->execute([$email]);
                 $userData = $stmt->fetch();
