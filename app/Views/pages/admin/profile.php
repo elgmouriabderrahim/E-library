@@ -1,4 +1,4 @@
-<h1 class="text-4xl font-bold mb-8 text-neutral-100">My Profile</h1>
+<h1 class="text-4xl font-bold mb-8 text-neutral-100 text-center">My Profile</h1>
 
 <div class="max-w-3xl mx-auto bg-neutral-200 shadow-lg rounded-lg overflow-hidden">
     <div class="flex flex-col md:flex-row items-center p-6 md:p-10">

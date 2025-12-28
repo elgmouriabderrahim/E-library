@@ -1,8 +1,8 @@
 <div class="p-8">
 
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-3xl font-bold text-slate-800">Books</h2>
-        <p class="text-slate-500 text-sm">Browse and manage your borrowed books</p>
+        <h2 class="text-3xl font-bold text-neutral-100">Books</h2>
+        <p class="text-neutral-100 text-sm">Browse and manage your borrowed books</p>
     </div>
 
     <div class="overflow-x-auto bg-white rounded-2xl shadow p-4">

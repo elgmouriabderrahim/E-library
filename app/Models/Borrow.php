@@ -21,14 +21,4 @@ class Borrow
         $this->borrowDate = $borrowDate;
         $this->returnDate = $returnDate;
     }
-
-    public function isActive(): bool
-    {
-        return $this->returnDate === null;
-    }
-
-    public function close(): void
-    {
-        $this->returnDate = new DateTime();
-    }
 }
