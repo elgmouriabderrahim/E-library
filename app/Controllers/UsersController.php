@@ -16,7 +16,6 @@ class UsersController
         $stmt = $pdo->prepare("
             SELECT id, firstName, lastName, email, role
             FROM users
-            ORDER BY id DESC
         ");
         $stmt->execute();
         $users = $stmt->fetchAll();
