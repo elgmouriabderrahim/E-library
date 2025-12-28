@@ -1,4 +1,4 @@
-<div class="min-h-[80vh] p-8 bg-slate-100">
+<div class="p-8">
 
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-3xl font-bold text-slate-800">Books</h2>
@@ -30,9 +30,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                 <?php if($book['status'] === "available"): ?>
-                                    <a href="/books/borrow?id=<?= $book['id'] ?>" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-blue-600 hover:underline">Borrow</a>
+                                    <a href="/books/borrow?id=<?= $book['id'] ?>" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-blue-600">Borrow</a>
                                 <?php elseif(Helper::isMyBorrow($myBorrows, $book['id'])): ?>
-                                    <a href="/books/returnBook?id=<?= $book['id'] ?>&redirect=/books" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-yellow-600 hover:underline">Return</a>
+                                    <a href="/books/returnBook?id=<?= $book['id'] ?>&redirect=/books" class="border rounded-md py-1 px-3 hover:bg-neutral-100 text-yellow-600">Return</a>
                                 <?php endif; ?>
 
                                 <a href="/books/show?id=<?= $book['id'] ?>" class="text-gray-600 hover:underline">View Details</a>

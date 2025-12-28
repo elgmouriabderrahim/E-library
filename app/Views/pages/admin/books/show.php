@@ -1,4 +1,4 @@
-<div class="min-h-[80vh] p-10 flex justify-center items-start">
+<div class=" p-10 flex justify-center items-start">
 
     <div class="w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden">
 

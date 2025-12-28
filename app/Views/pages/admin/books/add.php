@@ -1,4 +1,4 @@
-<div class="min-h-[80vh] bg-slate-100 p-8 flex justify-center items-start">
+<div class="p-8 flex justify-center items-start">
 
     <div class="w-full max-w-xl bg-white rounded-3xl shadow-lg p-8 relative">
 

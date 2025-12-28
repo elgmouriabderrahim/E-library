@@ -1,6 +1,6 @@
-<h1 class="text-4xl font-bold mb-8 text-gray-800">My Profile</h1>
+<h1 class="text-4xl font-bold mb-8 text-neutral-100">My Profile</h1>
 
-<div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+<div class="max-w-3xl mx-auto bg-neutral-200 shadow-lg rounded-lg overflow-hidden">
     <div class="flex flex-col md:flex-row items-center p-6 md:p-10">
         <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
             <div class="w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-4xl font-bold">

@@ -1,8 +1,8 @@
-<div class="min-h-[80vh] bg-slate-100 p-8">
+<div class="p-8">
 
-    <div class="mb-8">
-        <h1 class="text-3xl font-semibold text-slate-800">Users Management</h1>
-        <p class="text-slate-500 mt-1">Manage all registered users</p>
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-semibold text-neutral-100">Users Management</h1>
+        <p class="text-neutral-100 mt-1">all registered users</p>
     </div>
 
     <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
