@@ -7,24 +7,28 @@ class Router
     public function __construct()
     {
         $this->routes = [
-            '/' => ['HomeController', 'index'],
+            '/admin/overview' => ['OverviewController', 'overview'],
+            '/admin/books' => ['BooksController', 'books'],
+            '/admin/books/add' => ['BooksController', 'add'],
+            '/admin/books/show' => ['BooksController', 'show'],
+            '/admin/books/edit' => ['BooksController', 'edit'],
+            '/admin/books/delete' => ['BooksController', 'delete'],
+            '/admin/users' => ['UsersController', 'users'],
+            '/borrows' => ['BorrowsController', 'borrows'],
+            '/my-borrows' => ['BorrowController', 'my-borrow'],
+            '/profile' => ['ProfileController', 'profile'],
+            '/dashboard' => ['DashboardController', 'dashboard'],
             '/login' => ['AuthController', 'login'],
             '/register' => ['AuthController', 'register'],
             '/logout' => ['AuthController', 'logout'],
-            '/books' => ['BookController', 'index'],
-            '/books/show' => ['BookController', 'show'],
-            '/my-borrows' => ['BorrowController', 'index'],
-            '/admin' => ['AdminController', 'dashboard']
         ];
     }
 
     public function run()
     {
-        $uri = $_SERVER['REQUEST_URI'];
-
-        if (strpos($uri, '?') !== false) {
-            $uri = explode('?', $uri)[0];
-        }
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        if($uri === '/')
+            $uri = '/admin/overview';
 
         if (isset($this->routes[$uri])) {
             [$controllerName, $method] = $this->routes[$uri];
@@ -36,7 +40,7 @@ class Router
             return;
         }
 
-        require_once __DIR__ . '/../Controllers/HomeController.php';
-        (new HomeController())->notFound();
+        require_once __DIR__ . '/../Controllers/NotFoundController.php';
+        (new notFoundController())->notFound();
     }
 }
