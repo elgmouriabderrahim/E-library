@@ -15,7 +15,7 @@
 
                 <div>
                     <label class="block text-slate-700 font-semibold mb-2" for="title">Title</label>
-                    <input type="text" id="title" name="title" value="<?= htmlspecialchars($_POST['title']) ?>" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="text" id="title" name="title" value="<?= isset($_POST['title'])?  htmlspecialchars($_POST['title']):htmlspecialchars($book['title']) ?>" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                     <?php if(isset($errors['title'])):?>
                     <span class="text-red-500"><?= $errors['title']?></span>
                     <?php endif; ?>
@@ -23,7 +23,7 @@
 
                 <div>
                     <label class="block text-slate-700 font-semibold mb-2" for="author">Author</label>
-                    <input type="text" id="author" name="author" value="<?= htmlspecialchars($_POST['author']) ?>" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="text" id="author" name="author" value="<?= isset($_POST['title'])?  htmlspecialchars($_POST['author']):htmlspecialchars($book['author']) ?>" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
                 <?php if(isset($errors['author'])):?>
                     <span class="text-red-500"><?= $errors['author']?></span>
@@ -31,7 +31,7 @@
 
                 <div>
                     <label class="block text-slate-700 font-semibold mb-2" for="year">Year</label>
-                    <input type="number" id="year" name="year" value="<?= htmlspecialchars($_POST['year']) ?>" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="number" id="year" name="year" value="<?= isset($_POST['title'])?  htmlspecialchars($_POST['year']):htmlspecialchars($book['year']) ?>" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
                 <?php if(isset($errors['year'])):?>
                     <span class="text-red-500"><?= $errors['year']?></span>
