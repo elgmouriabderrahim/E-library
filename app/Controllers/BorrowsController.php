@@ -33,7 +33,7 @@ class BorrowsController
     }
     public function myBorrows()
     {
-        Auth::userOnly();
+        Auth::readerOnly();
         $pageTitle = "My Borrows";
         $view = 'reader/myBorrows.php';
         $pdo = Database::getConnection();
