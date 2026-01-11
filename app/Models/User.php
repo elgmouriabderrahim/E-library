@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../core/Database.php";
 
 abstract class User
 {
@@ -32,7 +33,7 @@ abstract class User
     }
     public static function register($firstname, $lastname, $email, $password)
     {
-        $pdo = App\Core\Database::getConnection();
+        $pdo = Database::getConnection();
         $errors = [];
 
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
