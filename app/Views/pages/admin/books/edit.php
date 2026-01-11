@@ -2,7 +2,7 @@
 
     <div class="w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden">
 
-        <div class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-6 text-center">
+        <div class="bg-gradient-to-r from-brown-600 to-brown-600 text-white p-6 text-center">
             <h1 class="text-3xl font-bold tracking-tight">Edit Book</h1>
             <p class="text-blue-200 mt-1 text-lg"><?= htmlspecialchars($book['title']) ?></p>
         </div>
